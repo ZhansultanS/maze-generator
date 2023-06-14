@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-primary" (click)="generator.generateMaze()">Generate</button>
+      <div class="board m-auto" [style.width.px]="boardConfig.cols * boardConfig.cellLength">
+        <div class="row m-0 d-flex" *ngFor="let row of board">
+          <div
+            class="cell p-0 d-flex align-items-center justify-content-center"
+            *ngFor="let cell of row"
+            [style]="{ width: cell.length + 'px', height: cell.length + 'px' }"
+            [style.background-color]="cell === generator.currentCell ? 'blue' : cell === generator.startCell ? 'yellow' : cell === generator.exitCell ? 'green' : 'gray' "
+            [class.border-top]="cell.northWall"
+            [class.border-end]="cell.eastWall"
+            [class.border-bottom]="cell.southWall"
+            [class.border-start]="cell.westWall"
+          >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
